@@ -8,7 +8,7 @@ function send_message(){
   local BOT_URL="$3"
 
 
-  if [[ -n ${BOT_GROUP_ID} ]] && [[ -n ${BOT_URL} ]];then
+  if [[ -n ${BOT_GROUP_ID} ]] && [[ -n ${BOT_URL} ]] && [[ ${WERCKER_SEND_MESSAGE_NOTIFY_ON} ]];then
     echo -e "{\n}" > bot_body.json
     cat bot_body.json |
     jq 'setpath(["groupId"]; "'"${BOT_GROUP_ID}"'")'|
@@ -18,5 +18,10 @@ function send_message(){
   fi
 }
 
+if [[ ${WERCKER_RESULT} == "failed" ]];then
+  export BOT_MESSAGE=${WERCKER_SEND_MESSAGE_FAILED_MESSAGE}
+else
+  export BOT_MESSAGE=${WERCKER_SEND_MESSAGE_PASSED_MESSAGE}
+fi
 
-send_message "${WERCKER_SEND_MESSAGE_BOT_MESSAGE}" "${WERCKER_SEND_MESSAGE_BOT_GROUP_ID}" "${WERCKER_SEND_MESSAGE_BOT_URL}"
+send_message "${BOT_MESSAGE}" "${WERCKER_SEND_MESSAGE_BOT_GROUP_ID}" "${WERCKER_SEND_MESSAGE_BOT_URL}"
