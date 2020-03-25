@@ -11,8 +11,8 @@ function send_message(){
   if [[ -n ${BOT_GROUP_ID} ]] && [[ -n ${BOT_URL} ]];then
     echo -e "{\n}" > bot_body.json
     cat bot_body.json |
-    jq 'setpath(["groupId"]; "${BOT_GROUP_ID}")'|
-    jq 'setpath(["message"]; "${BOT_MESSAGE}")' > bot_body_send.json
+    jq 'setpath(["groupId"]; "'"${BOT_GROUP_ID}"'")'|
+    jq 'setpath(["message"]; "'"${BOT_MESSAGE}"'")' > bot_body_send.json
     RESPONSE_CODE=$(curl --write-out %{http_code} --silent --output /dev/null -X POST --data @bot_body_send.json ${BOT_URL} -H "Content-Type: application/json")
     echo ${RESPONSE_CODE}
   fi
@@ -24,4 +24,4 @@ if [[ -n ${WERCKER_SEND_MESSAGE_PASSED_MESSAGE} ]];then
 else
   export BOT_MESSAGE="${WERCKER_SEND_MESSAGE_FAILED_MESSAGE}"
 fi
-send_message "${WERCKER_SEND_MESSAGE_BOT_MESSAGE}" "${WERCKER_SEND_MESSAGE_BOT_GROUP_ID}" "${WERCKER_SEND_MESSAGE_BOT_URL}"
+send_message "${BOT_MESSAGE}" "${WERCKER_SEND_MESSAGE_BOT_GROUP_ID}" "${WERCKER_SEND_MESSAGE_BOT_URL}"
