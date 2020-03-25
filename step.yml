@@ -1,0 +1,15 @@
+name: send_message
+version: 0.0.1
+summary: send meesage using POST
+tags:
+  - send message
+properties:
+  - name: BOT_MESSAGE
+    type: string
+    required: true
+  - name: BOT_GROUP_ID
+    type: string
+    required: true
+  - name: BOT_MESSAGE
+    type: string
+    required: true
