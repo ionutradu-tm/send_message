@@ -19,9 +19,9 @@ function send_message(){
 }
 
 if [[ ${WERCKER_RESULT} == "failed" ]];then
-  export BOT_MESSAGE="(devil) (devil) (devil) ${WERCKER_SEND_MESSAGE_FAILED_MESSAGE} (devil) (devil) (devil)"
+  export BOT_MESSAGE="(devil)  ${WERCKER_SEND_MESSAGE_FAILED_MESSAGE} (devil)"
 else
-  export BOT_MESSAGE="(like) (like) (like) ${WERCKER_SEND_MESSAGE_PASSED_MESSAGE} (like) (like) (like)"
+  export BOT_MESSAGE="(like)  ${WERCKER_SEND_MESSAGE_PASSED_MESSAGE} (like)"
 fi
 
 send_message "${BOT_MESSAGE}" "${WERCKER_SEND_MESSAGE_BOT_GROUP_ID}" "${WERCKER_SEND_MESSAGE_BOT_URL}"

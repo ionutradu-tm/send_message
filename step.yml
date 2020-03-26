@@ -1,6 +1,5 @@
 name: send_message
-version: 0.0.9
-summary: send meesage using POST
+version: 0.0.9 summary: send meesage using POST
 tags:
   - send message
 properties:
