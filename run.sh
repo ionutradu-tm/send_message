@@ -24,7 +24,7 @@ if [[ ${WERCKER_RESULT} == "failed" ]];then
       SEND="1"
   fi
 else
-  if [[ -z ${NOTIFY_ON} ]];then
+  if [[ ${NOTIFY_ON} != "failed" ]];then
     export BOT_MESSAGE="(like)  ${WERCKER_SEND_MESSAGE_PASSED_MESSAGE} (like)"
     SEDN="1"
   fi

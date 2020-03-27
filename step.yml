@@ -1,5 +1,5 @@
 name: send_message
-version: 0.0.12
+version: 0.0.13
 summary: send meesage using POST
 tags:
   - send message
@@ -16,6 +16,4 @@ properties:
   - name: PASSED_MESSAGE
     type: string
     required: true
-  - name: NOTIFY_ON
-    type: string
-    required: true
+
