@@ -19,7 +19,7 @@ function send_message(){
 }
 
 if [[ ${WERCKER_RESULT} == "failed" ]];then
-    export BOT_MESSAGE="(devil)  ${WERCKER_SEND_MESSAGE_FAILED_MESSAGE} (devil)"
+    export BOT_MESSAGE="(devil)  ${WERCKER_FAILED_STEP_DISPLAY_NAME} ${WERCKER_FAILED_STEP_MESSAGE} (devil)"
     SEND="1"
 else
   if [[ ${WERCKER_SEND_MESSAGE_NOTIFY_ON} != "failed" ]];then
