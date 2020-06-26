@@ -19,7 +19,7 @@ function send_message(){
 }
 
 if [[ ${WERCKER_RESULT} == "failed" ]];then
-    export BOT_MESSAGE="(devil) PIPE: ${WERCKER_FAILED_STEP_DISPLAY_NAME}, ERROR: ${WERCKER_FAILED_STEP_MESSAGE} (devil)"
+    export BOT_MESSAGE="(devil) Branch: ${WERCKER_GIT_BRANCH}, PIPE: ${WERCKER_FAILED_STEP_DISPLAY_NAME}, ERROR: ${WERCKER_FAILED_STEP_MESSAGE} (devil)"
     SEND="1"
 else  
   if [[ ${WERCKER_SEND_MESSAGE_NOTIFY_ON} != "failed" ]];then
