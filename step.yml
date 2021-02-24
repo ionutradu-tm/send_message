@@ -1,5 +1,5 @@
 name: send_message
-version: 0.0.19
+version: 0.0.20
 summary: send meesage using POST
 tags:
   - send message
@@ -9,11 +9,20 @@ properties:
     required: true
   - name: BOT_GROUP_ID
     type: string
-    required: true
+    required: false
   - name: FAILED_MESSAGE
     type: string
     required: true
   - name: PASSED_MESSAGE
     type: string
     required: true
+  - name: BOT_APP
+    type: string
+    required: false
+  - name: BOT_USERNAME
+    type: string
+    required: false
+  - name: BOT_EMOJI
+    type: string
+    required: false
 

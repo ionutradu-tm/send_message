@@ -1,11 +1,15 @@
 #!/bin/bash
 
+BOT_APP=${WERCKER_SEND_MESSAGE_BOT_APP}
+BOT_USERNAME=${WERCKER_SEND_MESSAGE_BOT_USERNAME}
+BOT_EMOJI=${WERCKER_SEND_MESSAGE_BOT_EMOJI}
+
 
 function send_message(){
 
   local BOT_MESSAGE="$1"
-  local BOT_GROUP_ID="$2"
-  local BOT_URL="$3"
+  local BOT_GROUP_ID="$3"
+  local BOT_URL="$2"
 
   if [[ ${BOT_APP,,} == "slack" ]];then
     BOT_USERNAME=${BOT_USERNAME:"SlackBot"}
@@ -38,5 +42,5 @@ else
   fi
 fi
 if [[ -n ${SEND} ]];then
-  send_message "${BOT_MESSAGE}" "${WERCKER_SEND_MESSAGE_BOT_GROUP_ID}" "${WERCKER_SEND_MESSAGE_BOT_URL}"
+  send_message "${BOT_MESSAGE}" "${WERCKER_SEND_MESSAGE_BOT_URL}" "${WERCKER_SEND_MESSAGE_BOT_GROUP_ID}"
 fi
