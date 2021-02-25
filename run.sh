@@ -42,7 +42,7 @@ else
   if [[ ${WERCKER_SEND_MESSAGE_NOTIFY_ON} != "failed" ]];then
     export BOT_MESSAGE="(like)  ${WERCKER_SEND_MESSAGE_PASSED_MESSAGE} (like)"
     if [[ ${BOT_APP,,} == "slack" ]];then
-      export BOT_MESSAGE=":rocket: Branch: ${WERCKER_GIT_BRANCH}, PIPE: ${WERCKER_FAILED_STEP_DISPLAY_NAME}, ERROR: ${WERCKER_FAILED_STEP_MESSAGE} :rocket:"
+      export BOT_MESSAGE=":rocket:  ${WERCKER_SEND_MESSAGE_PASSED_MESSAGE} :rocket:"
     fi
     SEND="1"
   fi
