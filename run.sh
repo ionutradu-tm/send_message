@@ -13,7 +13,7 @@ function send_message(){
 
   if [[ ${BOT_APP,,} == "slack" ]];then
     BOT_USERNAME=${BOT_USERNAME:-SlackBot}
-    BOT_EMOJI=${BOT_EMOJI:-ghost}
+    BOT_EMOJI=${BOT_EMOJI:-":ghost:"}
     if [[ -n ${BOT_URL} ]] && [[ -n ${BOT_MESSAGE} ]];then
       PAYLOAD=$(echo -e "{\n}" |
       jq 'setpath(["username"]; "'"${BOT_USERNAME}"'")'|
