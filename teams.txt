@@ -1,0 +1,2 @@
+curl -H "Content-Type:application/json" -d "{'text':'iradu test &#x1F60D; ', 'Title' : 'Acum ma joc'}" https
+https://apps.timwhitlock.info/emoji/tables/unicode
