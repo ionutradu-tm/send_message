@@ -12,6 +12,14 @@ if [[ ${BOT_APP,,} == "slack" ]];then
     RESPONSE_CODE=$(curl -k --write-out %{http_code} --silent --output /dev/null -X POST --data-urlencode "payload=$PAYLOAD" ${BOT_URL} )
     echo "Slack response_conde: ${RESPONSE_CODE} "
   fi
+elif [[ ${BOT_APP,,} == "teams" ]];then
+  BOT_EMOJI=${BOT_EMOJI:-"&#x1F60D"}
+    if [[ -n ${BOT_URL} ]] && [[ -n ${BOT_MESSAGE} ]];then
+    PAYLOAD=$(echo -e "{\n}" |
+    jq 'setpath(["text"]; "'"${BOT_MESSAGE}"'")' 
+    RESPONSE_CODE=$(curl -k --write-out %{http_code} --silent --output /dev/null -X POST --data-urlencode "payload=$PAYLOAD" ${BOT_URL} )
+    echo "Teams response_conde: ${RESPONSE_CODE} "
+  fi
 elif [[ -n ${BOT_GROUP_ID} ]] && [[ -n ${BOT_URL} ]] && [[ -n ${BOT_MESSAGE} ]];then
   echo -e "{\n}" > bot_body.json
   cat bot_body.json |
